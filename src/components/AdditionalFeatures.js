@@ -1,21 +1,27 @@
 import React from 'react';
-import AdditionalFeature from './AdditionalFeature';
+import {connect} from "react-redux";
 
-const AdditionalFeatures = props => {
+const Header = props => {
   return (
-    <div className="content">
-      <h4>Additional Features</h4>
-      {props.additionalFeatures.length ? (
-        <ol type="1">
-          {props.additionalFeatures.map(item => (
-            <AdditionalFeature key={item.id} feature={item} />
-          ))}
-        </ol>
-      ) : (
-        <p>Nice looking car!</p>
-      )}
-    </div>
+    <>
+    {console.log(props)}
+      <figure className="image is-128x128">
+        <img src={props.car.image} alt={props.car.name} />
+      </figure>
+      <h2>{props.car.name}</h2>
+      <p>Amount: ${props.car.price}</p>
+    </>
   );
 };
 
-export default AdditionalFeatures;
+
+const mapStateToProps = state => {
+  console.log("state", state);
+  return {
+    car: state.car
+  };
+};
+
+export default connect(
+  mapStateToProps  // same as { updateTitle: updateTitle }
+)(Header);
