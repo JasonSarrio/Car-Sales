@@ -43,6 +43,8 @@ export const reducer = (state = initialState, action) => {
       return state;
   }
 
+
+
   function totalItems(items) {
     let total = 0;
     items.forEach((item) => {
@@ -54,5 +56,9 @@ export const reducer = (state = initialState, action) => {
     console.log("total is ", total)
     return total;
   }
+
+
+
+  
 
 }
